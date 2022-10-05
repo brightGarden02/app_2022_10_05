@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:3306/app__2022_10_05___test?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
+    username: root
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create
