@@ -6,6 +6,8 @@ import com.ll.exam.app__2022_10_05.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ArticleService {
@@ -24,4 +26,7 @@ public class ArticleService {
         return article;
     }
 
+    public List<Article> findAll() {
+        return articleRepository.findAllByOrderByIdDesc();
+    }
 }

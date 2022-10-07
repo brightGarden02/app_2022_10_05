@@ -21,7 +21,6 @@ public class Article extends BaseEntity {
     @ManyToOne
     private Member author;
 
-    @Column(unique = true)
     private String subject;
 
     @JsonIgnore
