@@ -90,4 +90,49 @@ public class AuthTests {
     }
 
 
+    @Test
+    @DisplayName("POST /member/login으로 올바르지 않은 username과 password 데이터를 넘기면 400")
+    void t3() throws Exception {
+
+        //when
+        ResultActions resultActions = mvc
+                .perform(
+                        post("/member/login")
+                                .content("""
+                                        {
+                                            "username" : "",
+                                            "password": "1234"
+                                        }                                        
+                                        """.stripIndent())
+                                .contentType(new MediaType(MediaType.APPLICATION_JSON, StandardCharsets.UTF_8))
+
+                )
+                .andDo(print());
+
+
+        //then
+        resultActions
+                .andExpect(status().is4xxClientError());
+
+        mvc
+                .perform(
+                        post("/member/login")
+                                .content("""
+                                        {
+                                            "username": "user1",
+                                            "password": ""
+                                        }
+                                                                               
+                                        """.stripIndent())
+                                .contentType(new MediaType(MediaType.APPLICATION_JSON, StandardCharsets.UTF_8))
+                )
+                .andDo(print());
+
+        //then
+        resultActions
+                .andExpect(status().is4xxClientError());
+
+    }
+
+
 }

@@ -18,6 +18,10 @@ public class MemberController {
     @PostMapping("/login")
     public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
 
+        if(!loginDto.isNotValid()) {
+            return new ResponseEntity<>(null, null, HttpStatus.BAD_REQUEST);
+        }
+
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authentication", "JWT키");
         String body = "username : %s, password : %s".formatted(loginDto.getUsername(), loginDto.getPassword());
@@ -29,5 +33,9 @@ public class MemberController {
     public static class LoginDto {
         private String username;
         private String password;
+
+        public boolean isNotValid() {
+            return username == null || password == null || username.trim().length() == 0 || password.trim().length() == 0;
+        }
     }
 }
