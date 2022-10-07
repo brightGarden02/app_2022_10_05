@@ -5,9 +5,10 @@ spring:
     restart:
       enabled: true
   datasource:
-    url: jdbc:mariadb://127.0.0.1:3306/app__2022_10_05___dev?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
-    username: root
-    password:
+#    url: jdbc:mysql://127.0.0.1:3306/app__2022_10_05___dev?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/app__2022_10_05___dev?serverTimezone=UTC
+    username: appuser1
+    password: app1234
   jpa:
     hibernate:
       ddl-auto: create

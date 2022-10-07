@@ -2,7 +2,7 @@ spring:
   profiles:
     active: dev
   datasource:
-    driver-class-name: org.mariadb.jdbc.Driver
+    driver: com.mysql.cj.jdbc.Driver
 logging:
   level:
     com.ll.exam.app__2022_10_05.app: debug

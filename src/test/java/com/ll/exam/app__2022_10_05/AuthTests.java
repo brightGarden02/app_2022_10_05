@@ -37,8 +37,8 @@ public class AuthTests {
                         post("/member/login")
                                 .content("""
                                         {
-                                        "username": "user1",
-                                        "password": "1234"
+                                        "username": "appuser1",
+                                        "password": "app1234"
                                         }
                         
                                         """.stripIndent())
